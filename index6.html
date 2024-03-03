@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> order</title>
+    <link rel="stylesheet" href="./css/style6.css">
+</head>
+<body>
+    <section class="order" id="order">
+
+        <h1 class="heading"> <span>order</span> now </h1>
+    
+        <div class="row">
+            
+            <div class="image">
+                <img src="./images/home-img.png" alt="">
+            </div>
+    
+            <form autocomplete="off" method="post" name="google-sheet">
+    
+                <div class="inputBox">
+                    <input type="text" placeholder="name" name="name">
+                    <input type="email" placeholder="email" name="email">
+                </div>
+    
+                <div class="inputBox">
+                    <input type="number" placeholder="number" name="number">
+        
+                    <select name="food">
+                        <option>#select yoyr meal</option>
+                            <option>Red Mill King Burger </option>
+                            <option>Tokyo's Great Burger</option>
+                            <option>Humburg-Steak</option>
+                            <option>Royal-Eatery Burg-R</option>
+                            <option>King-Fergburger</option>
+                            <option>The Husk-Cheesburger</option>
+                            <option>Heart-Attack Grill Burg-R</option>
+                            <option>Tom's-Belly Burger</option>
+                            <option>P.N.Y-Paris Burger</option>
+                            <option>INDIA'n Special MUMBurg</option>
+                            <option>Austrelian-Green Leaf Burger</option>
+                            <option>Flippin-Toss Burger</option>
+                            <option>Hong-Kong Special HONBO</option>
+                            <option>Hank-Paris Burger</option>
+                    </select>
+                    <input type="text" placeholder="address" id="address"name="address">
+
+                </div>
+                <input type="submit" value="order now" class="btn">
+                <input type="reset" value="reset" class="btn">
+    
+            </form>
+    
+        </div>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxicByJkfwGOek4sge7opLFdBAiRp3HLQXJTYXyjtQvEL5SdpLZFJh7X195OEG8eUXvgw/exec'
+            const form = document.forms['google-sheet']
+
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for your order..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+    
+    </section>
+</body>
+</html>
